@@ -84,7 +84,7 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
       </div>
 
       <button className="btn" onClick={handleScreenshot}>
-        Download Screenshot
+        Screenshot
       </button>
     </div>
   );

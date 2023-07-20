@@ -4,6 +4,7 @@ import { ethers } from "ethers";
 const Module1: React.FC = () => {
   const [address, setAddress] = useState("");
   const [balance, setBalance] = useState("");
+  const [usdBalance, setUsdBalance] = useState("");
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -13,11 +14,22 @@ const Module1: React.FC = () => {
     );
     const data = await response.json();
 
-    // Convert Wei to Ether and round to 2 decimal places
+    // convert wei to ether and round to 2 decimal places
     const balanceInEther = (parseInt(data.result) / 10 ** 18).toFixed(2);
-
     setBalance(balanceInEther);
+
+    // fetch ETH price in USD
+    const priceResponse = await fetch(
+      "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
+    );
+    const priceData = await priceResponse.json();
+
+    const balanceInUsd = (
+      parseFloat(balanceInEther) * priceData.ethereum.usd
+    ).toFixed(2);
+    setUsdBalance(balanceInUsd);
   };
+
   return (
     <div className="p-4 bg-gray-300 shadow-md rounded-md">
       <h2 className="text-l font-bold">balance checkoor</h2>
@@ -34,7 +46,12 @@ const Module1: React.FC = () => {
           Check Balance
         </button>
       </form>
-      {balance && <p>Balance: {balance} Ether</p>}
+      {balance && (
+        <p>
+          Balance: <br />
+          {balance} Ether <br />${usdBalance}
+        </p>
+      )}
     </div>
   );
 };

@@ -1,5 +1,3 @@
-// src/pages/index.tsx
-
 import React from "react";
 import Module1 from "../components/Module1";
 import Module2 from "../components/Module2";
