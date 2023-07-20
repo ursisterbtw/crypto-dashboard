@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
+import AnimatedButton from "@/utils/AnimatedButton";
 
 const Module1: React.FC = () => {
   const [address, setAddress] = useState("");
@@ -42,9 +43,9 @@ const Module1: React.FC = () => {
           placeholder="eth addy"
           required
         />
-        <button type="submit" className="btn">
+        <AnimatedButton type="submit" className="btn">
           Check Balance
-        </button>
+        </AnimatedButton>
       </form>
       {balance && (
         <p>

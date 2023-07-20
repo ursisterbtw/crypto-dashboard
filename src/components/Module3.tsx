@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import html2canvas from "html2canvas";
+import AnimatedButton from "@/utils/AnimatedButton";
 
 const Module3: React.FC<{ className?: string }> = ({ className }) => {
   const [ticker, setTicker] = useState("");
@@ -63,9 +64,9 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
           placeholder="sell price"
           required
         />
-        <button type="submit" className="btn">
+        <AnimatedButton type="submit" className="btn">
           Calculate
-        </button>
+        </AnimatedButton>
       </form>
       <div ref={resultRef}>
         {percentage !== null && (
@@ -83,9 +84,9 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
         )}
       </div>
 
-      <button className="btn" onClick={handleScreenshot}>
+      <AnimatedButton className="btn" onClick={handleScreenshot}>
         Screenshot
-      </button>
+      </AnimatedButton>
     </div>
   );
 };

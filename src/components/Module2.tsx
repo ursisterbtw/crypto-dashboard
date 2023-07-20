@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AnimatedButton from "@/utils/AnimatedButton";
 
 type Coin = {
   id: string;
@@ -57,9 +58,9 @@ const Module2: React.FC = () => {
           placeholder="enter coin"
           required
         />
-        <button type="submit" className="btn">
+        <AnimatedButton type="submit" className="btn">
           Add Coin
-        </button>
+        </AnimatedButton>
       </form>
       {coinData.map((coin) => (
         <div key={coin.id}>
