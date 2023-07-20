@@ -1,25 +1,23 @@
 import React from "react";
-import { SocialIcon } from "react-social-icons";
 
 const Header: React.FC = () => {
   return (
     <header className="flex justify-between items-center p-4 bg-green-500 text-white">
-      <SocialIcon
-        className="ml-4"
-        url="https://twitter.com/ursisterbtw"
-        target="_blank"
-        bgColor="#ffffff"
-        style={{ height: 25, width: 25 }}
-      />
+      <a href="https://twitter.com/yourusername">
+        <img
+          src="/twitter-icon.png"
+          alt="Twitter"
+          style={{ height: 25, width: 25, filter: "brightness(0) invert(1)" }}
+        />
+      </a>
       <h1>ursister's dashboard</h1>
-
-      <SocialIcon
-        className="mr-4"
-        url="https://github.com/ursisterbtw"
-        target="_blank"
-        bgColor="#ffffff"
-        style={{ height: 25, width: 25 }}
-      />
+      <a href="https://github.com/yourusername">
+        <img
+          src="/github-icon.png"
+          alt="GitHub"
+          style={{ height: 25, width: 25, filter: "brightness(0) invert(1)" }}
+        />
+      </a>
     </header>
   );
 };

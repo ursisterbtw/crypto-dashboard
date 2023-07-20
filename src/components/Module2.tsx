@@ -77,7 +77,6 @@ const Module2: React.FC = () => {
               {coin.price_change_percentage_24h.toFixed(2)}%
             </span>
           </p>
-          <button onClick={() => deleteCoin(coin.id)}>x</button>
         </div>
       ))}
     </div>

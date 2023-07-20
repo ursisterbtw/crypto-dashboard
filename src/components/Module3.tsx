@@ -69,12 +69,20 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
       </form>
       <div ref={resultRef}>
         {percentage !== null && (
-          <p>
-            {ticker}: {percentage > 0 ? "+" : ""}
-            {percentage.toFixed(2)}%
+          <p className="text-xl">
+            {ticker}:{" "}
+            <span
+              className={`${
+                percentage > 0 ? "text-green-500" : "text-red-500"
+              }`}
+            >
+              {percentage > 0 ? "+" : ""}
+              {percentage.toFixed(2)}%
+            </span>
           </p>
         )}
       </div>
+
       <button className="btn" onClick={handleScreenshot}>
         Download Screenshot
       </button>
