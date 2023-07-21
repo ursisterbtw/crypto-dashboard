@@ -33,7 +33,7 @@ const Module1: React.FC = () => {
 
   return (
     <div className="p-4 bg-gray-400 shadow-md rounded-md">
-      <h2 className="text-l">balance checkoor</h2>
+      <h2 className="text-lg">balance checkoor</h2>
       <form onSubmit={handleSubmit}>
         <input
           className="text-center w-full m-2 p-2 rounded-md"

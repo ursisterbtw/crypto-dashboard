@@ -48,7 +48,7 @@ const Module2: React.FC = () => {
 
   return (
     <div className="p-4 bg-gray-400 shadow-md rounded-md">
-      <h2 className="text-l">price trackoor</h2>
+      <h2 className="text-lg">price trackoor</h2>
       <form onSubmit={handleSubmit}>
         <input
           className="text-center w-full m-2 p-2 rounded-md"
