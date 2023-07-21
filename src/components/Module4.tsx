@@ -34,9 +34,9 @@ const Module4: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <div className={`p-4 bg-gray-400 shadow-md rounded-md ${className}`}>
       {" "}
-      <h2 className="text-lg">Top Gainers & Losers</h2>
+      <h2 className="text-lg">24h Gainers & Losers</h2>
       <div className="mt-2">
-        <h3 className="text-green-600">Top Gainers</h3>
+        <h3 className="text-green-600">Gainers</h3>
         {gainers.map((coin) => (
           <p key={coin.id}>
             {coin.name}: {coin.price_change_percentage_24h.toFixed(2)}%
@@ -44,7 +44,7 @@ const Module4: React.FC<{ className?: string }> = ({ className }) => {
         ))}
       </div>
       <div className="mt-2">
-        <h3 className="text-red-600">Top Losers</h3>
+        <h3 className="text-red-600">Losers</h3>
         {losers.map((coin) => (
           <p key={coin.id}>
             {coin.name}: {coin.price_change_percentage_24h.toFixed(2)}%
