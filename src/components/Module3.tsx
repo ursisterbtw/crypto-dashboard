@@ -37,8 +37,8 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
   };
 
   return (
-    <div className={`p-4 bg-gray-300 shadow-md rounded-md ${className}`}>
-      <h2 className="text-xl font-bold">PnL Calculatoor</h2>
+    <div className={`p-4 bg-gray-400 shadow-md rounded-md ${className}`}>
+      <h2 className="text-xl">PnL Calculatoor</h2>
       <form onSubmit={handleSubmit}>
         <input
           className="m-1 rounded-md text-center"
@@ -68,13 +68,13 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
           Calculate
         </AnimatedButton>
       </form>
-      <div ref={resultRef}>
+      <div className="mb-1" ref={resultRef}>
         {percentage !== null && (
           <p className="text-xl">
             {ticker}:{" "}
             <span
               className={`${
-                percentage > 0 ? "text-green-500" : "text-red-500"
+                percentage > 0 ? "text-green-600" : "text-red-600"
               }`}
             >
               {percentage > 0 ? "+" : ""}

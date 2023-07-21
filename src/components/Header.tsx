@@ -2,7 +2,7 @@ import React from "react";
 
 const Header: React.FC = () => {
   return (
-    <header className="flex justify-between items-center p-4 bg-customGreen text-white">
+    <header className="flex justify-between items-center p-4 bg-black text-white">
       <a target="_blank" href="https://twitter.com/ursisterbtw">
         <img
           src="/twitter-icon.png"

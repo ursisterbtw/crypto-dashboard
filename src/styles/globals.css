@@ -27,5 +27,5 @@ body {
     rgb(var(--background-start-rgb));
 }
 .btn {
-  @apply m-2 px-4 py-2 bg-customGreen text-white lowercase font-bold rounded;
+  @apply m-2 px-4 py-2 bg-black text-white lowercase rounded;
 }
