@@ -35,9 +35,7 @@ const Home: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         className="col-span-2"
-      >
-        <Module4 className="col-span-2" />
-      </motion.div>
+      ></motion.div>
     </div>
   );
 };
