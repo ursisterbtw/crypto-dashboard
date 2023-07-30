@@ -2,8 +2,9 @@ import React from "react";
 import Module1 from "../components/Module1";
 import Module2 from "../components/Module2";
 import Module3 from "../components/Module3";
-import { motion } from "framer-motion";
 import Module4 from "@/components/Module4";
+import Module5 from "@/components/Module5";
+import { motion } from "framer-motion";
 
 const Home: React.FC = () => {
   return (
@@ -35,7 +36,17 @@ const Home: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         className="col-span-2"
-      ></motion.div>
+      >
+        {/* <Module4 /> */}
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="col-span-2"
+      >
+        {/* <Module5 /> */}
+      </motion.div>
     </div>
   );
 };
