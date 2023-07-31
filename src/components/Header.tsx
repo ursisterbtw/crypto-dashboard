@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import AnimatedIcon from "@/utils/AnimatedIcon";
 
 const Header: React.FC = () => {
@@ -12,7 +13,13 @@ const Header: React.FC = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
       />
-      <h1>ursister's dashboard</h1>
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, delay: 1 }}
+      >
+        ursister's dashboard
+      </motion.h1>
       <AnimatedIcon
         href="https://github.com/ursisterbtw"
         imgSrc="/github-icon.png"
