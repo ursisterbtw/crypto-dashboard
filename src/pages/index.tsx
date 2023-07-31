@@ -4,6 +4,7 @@ import Module2 from "../components/Module2";
 import Module3 from "../components/Module3";
 import Module4 from "@/components/Module4";
 import Module5 from "@/components/Module5";
+import Module6 from "@/components/Module6";
 import { motion } from "framer-motion";
 
 const Home: React.FC = () => {
@@ -46,6 +47,14 @@ const Home: React.FC = () => {
         className="col-span-2"
       >
         {/* <Module5 /> */}
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="col-span-2"
+      >
+        {/* <Module6 /> */}
       </motion.div>
     </div>
   );

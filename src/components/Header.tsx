@@ -16,7 +16,7 @@ const Header: React.FC = () => {
       <motion.h1
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 1 }}
+        transition={{ duration: 1.5, delay: 0.5 }}
       >
         ursister's dashboard
       </motion.h1>
