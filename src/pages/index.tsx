@@ -38,7 +38,7 @@ const Home: React.FC = () => {
         transition={{ duration: 1 }}
         className="col-span-2"
       >
-        {/* <Module4 /> */}
+        <Module4 />
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 100 }}
