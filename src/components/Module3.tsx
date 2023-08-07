@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import html2canvas from "html2canvas";
 import AnimatedButton from "@/utils/AnimatedButton";
 
 const Module3: React.FC<{ className?: string }> = ({ className }) => {
@@ -7,7 +6,6 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
   const [buyPrice, setBuyPrice] = useState("");
   const [sellPrice, setSellPrice] = useState("");
   const [percentage, setPercentage] = useState<number | null>(null);
-  const resultRef = useRef(null);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -24,15 +22,40 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
   };
 
   const handleScreenshot = async () => {
-    if (resultRef.current) {
-      const canvas = await html2canvas(resultRef.current);
-      const imgData = canvas.toDataURL("image/png");
-      const link = document.createElement("a");
-      link.href = imgData;
-      link.download = "screenshot.png";
-      link.click();
-    } else {
-      console.error("Could not create screenshot: resultRef.current is null");
+    if (percentage !== null) {
+      const canvas = document.createElement("canvas");
+      canvas.width = 1200;
+      canvas.height = 675;
+      const ctx = canvas.getContext("2d");
+
+      const image = new Image();
+      image.src = "/bull.png";
+      image.onload = () => {
+        ctx.drawImage(image, 0, 0, 1200, 675);
+
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(800, 280, 300, 115);
+
+        ctx.fillStyle = "white";
+        ctx.font = "20px Arial";
+        ctx.textAlign = "left";
+
+        ctx.fillText(`Ticker: ${ticker}`, 810, 310);
+        ctx.fillText(`Buy Price: $${buyPrice}`, 810, 335);
+        ctx.fillText(`Sell Price: $${sellPrice}`, 810, 360);
+        ctx.fillText(
+          `Gain/Loss: ${percentage > 0 ? "+" : ""}${percentage.toFixed(2)}%`,
+          810,
+          385
+        );
+
+        // Open the newly generated image in a new tab
+        const newWindow = window.open();
+        newWindow.document.write(
+          `<img src="${canvas.toDataURL("image/png")}" alt="Generated Image"/>`
+        );
+      };
     }
   };
 
@@ -68,7 +91,7 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
           Calculate
         </AnimatedButton>
       </form>
-      <div className="mb-1" ref={resultRef}>
+      <div className="mb-1">
         {percentage !== null && (
           <p className="text-xl">
             {ticker}:{" "}
