@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
 import AnimatedButton from "@/utils/AnimatedButton";
+import FontFaceObserver from "fontfaceobserver";
 
 const Module3: React.FC<{ className?: string }> = ({ className }) => {
   const [ticker, setTicker] = useState("");
-  const [buyPrice, setBuyPrice] = useState("");
-  const [sellPrice, setSellPrice] = useState("");
+  const [buyPrice, setBuyAmount] = useState("");
+  const [sellPrice, setSellAmount] = useState("");
   const [percentage, setPercentage] = useState<number | null>(null);
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -30,24 +31,35 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
 
       const image = new Image();
       image.src = "/bull.png";
-      image.onload = () => {
+      image.onload = async () => {
         ctx.drawImage(image, 0, 0, 1200, 675);
 
-        ctx.strokeStyle = "white";
-        ctx.lineWidth = 2;
-        ctx.strokeRect(800, 280, 300, 115);
+        // Wait for the "Press Start 2P" font to be loaded
+        const font = new FontFaceObserver("Press Start 2P");
+        await font.load();
 
-        ctx.fillStyle = "white";
-        ctx.font = "20px Arial";
+        // Use the loaded font for rendering text on the canvas
+        const fontSize = "20px";
+        const fontSetting = `${fontSize} 'Press Start 2P'`;
+
+        ctx.font = fontSetting;
         ctx.textAlign = "left";
 
-        ctx.fillText(`Ticker: ${ticker}`, 810, 310);
-        ctx.fillText(`Buy Price: $${buyPrice}`, 810, 335);
-        ctx.fillText(`Sell Price: $${sellPrice}`, 810, 360);
+        const xOffset = 700; // Further to the left than before
+        const yOffset = 310;
+        const lineSpacing = 30;
+
+        ctx.fillStyle = "white";
+        ctx.fillText(`coin: $${ticker}`, xOffset, yOffset);
+        ctx.fillText(`bought: $${buyPrice}`, xOffset, yOffset + lineSpacing);
+        ctx.fillText(`sold: $${sellPrice}`, xOffset, yOffset + 2 * lineSpacing);
+
+        // Apply red/green logic only for the percentage
+        ctx.fillStyle = percentage > 0 ? "green" : "red";
         ctx.fillText(
-          `Gain/Loss: ${percentage > 0 ? "+" : ""}${percentage.toFixed(2)}%`,
-          810,
-          385
+          `pnl: ${percentage > 0 ? "+" : " "}${percentage.toFixed(2)}%`,
+          xOffset,
+          yOffset + 3 * lineSpacing
         );
 
         // Open the newly generated image in a new tab
@@ -75,16 +87,16 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
           className="m-1 rounded-md text-center"
           type="text"
           value={buyPrice}
-          onChange={(e) => setBuyPrice(e.target.value)}
-          placeholder="buy price"
+          onChange={(e) => setBuyAmount(e.target.value)}
+          placeholder="buy amount"
           required
         />
         <input
           className="m-1 rounded-md text-center"
           type="text"
           value={sellPrice}
-          onChange={(e) => setSellPrice(e.target.value)}
-          placeholder="sell price"
+          onChange={(e) => setSellAmount(e.target.value)}
+          placeholder="sell amount"
           required
         />
         <AnimatedButton type="submit" className="btn">
