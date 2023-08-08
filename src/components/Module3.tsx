@@ -34,11 +34,11 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
       image.onload = async () => {
         ctx.drawImage(image, 0, 0, 1200, 675);
 
-        // Wait for the "Kiln Serif Regular" font to be loaded
+        // waits for the "Kiln Serif Regular" font to be loaded
         const font = new FontFaceObserver("kiln-serif");
         await font.load();
 
-        // Use the loaded font for rendering text on the canvas
+        // uses the loaded font for rendering text on the canvas
         const fontSize = "48px";
         const fontSetting = `${fontSize} 'kiln-serif', sans-serif`;
 
@@ -54,7 +54,7 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
         ctx.fillText(`bought: $${buyPrice}`, xOffset, yOffset + lineSpacing);
         ctx.fillText(`sold: $${sellPrice}`, xOffset, yOffset + 2 * lineSpacing);
 
-        // Apply red/green logic for the percentage and multiplier
+        // applies red/green logic for the percentage and multiplier
         ctx.fillStyle = percentage > 0 ? "green" : "red";
         ctx.fillText(
           `pnl: ${percentage > 0 ? "+" : " "}${percentage.toFixed(2)}%`,
@@ -65,7 +65,7 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
         const multiplier = (1 + percentage / 100).toFixed(2) + "x";
         ctx.fillText(multiplier, xOffset, yOffset + 4 * lineSpacing);
 
-        // Open the newly generated image in a new tab
+        // opens the newly generated image in a new tab
         const newWindow = window.open();
         newWindow.document.write(
           `<img src="${canvas.toDataURL("image/png")}" alt="Generated Image"/>`
