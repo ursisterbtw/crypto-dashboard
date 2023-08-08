@@ -24,7 +24,7 @@ const Module2: React.FC = () => {
     );
     const coinList: CoinList[] = await coinListRes.json();
 
-    // Find the coin that the user inputs by ID or symbol
+    // finds coin by ticker or id
     const coin = coinList.find((c) => c.id === input || c.symbol === input);
 
     if (coin) {

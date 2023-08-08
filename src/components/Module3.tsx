@@ -34,33 +34,36 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
       image.onload = async () => {
         ctx.drawImage(image, 0, 0, 1200, 675);
 
-        // Wait for the "Press Start 2P" font to be loaded
-        const font = new FontFaceObserver("Press Start 2P");
+        // Wait for the "Kiln Serif Regular" font to be loaded
+        const font = new FontFaceObserver("kiln-serif");
         await font.load();
 
         // Use the loaded font for rendering text on the canvas
-        const fontSize = "20px";
-        const fontSetting = `${fontSize} 'Press Start 2P'`;
+        const fontSize = "48px";
+        const fontSetting = `${fontSize} 'kiln-serif', sans-serif`;
 
         ctx.font = fontSetting;
         ctx.textAlign = "left";
 
-        const xOffset = 700; // Further to the left than before
-        const yOffset = 310;
-        const lineSpacing = 30;
+        const xOffset = 725;
+        const yOffset = 250;
+        const lineSpacing = 60;
 
-        ctx.fillStyle = "white";
+        ctx.fillStyle = "#5f483a";
         ctx.fillText(`coin: $${ticker}`, xOffset, yOffset);
         ctx.fillText(`bought: $${buyPrice}`, xOffset, yOffset + lineSpacing);
         ctx.fillText(`sold: $${sellPrice}`, xOffset, yOffset + 2 * lineSpacing);
 
-        // Apply red/green logic only for the percentage
+        // Apply red/green logic for the percentage and multiplier
         ctx.fillStyle = percentage > 0 ? "green" : "red";
         ctx.fillText(
           `pnl: ${percentage > 0 ? "+" : " "}${percentage.toFixed(2)}%`,
           xOffset,
           yOffset + 3 * lineSpacing
         );
+
+        const multiplier = (1 + percentage / 100).toFixed(2) + "x";
+        ctx.fillText(multiplier, xOffset, yOffset + 4 * lineSpacing);
 
         // Open the newly generated image in a new tab
         const newWindow = window.open();
