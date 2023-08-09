@@ -14,7 +14,7 @@ const Home: React.FC = () => {
         transition={{ duration: 1, ease: "easeOut" }} // Ease out for a smoother transition
         className="col-span-2"
       >
-        <Module4 />
+        <Module3 />
       </motion.div>
       <motion.div
         initial={{ opacity: 0, x: -100 }}
