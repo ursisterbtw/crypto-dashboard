@@ -12,14 +12,14 @@ const HeaderContainer: React.FC = () => {
 
   return (
     <div>
-      <header className="flex justify-between items-center p-4 bg-black text-white overflow-hidden">
+      <header className="flex justify-between items-center p-4 bg-transparent text-white overflow-hidden">
         <AnimatedIcon
           href="https://twitter.com/ursisterbtw"
           imgSrc="/twitter-icon.png"
           alt="Twitter"
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
         />
         <motion.h1
           initial={{ opacity: 0 }}
@@ -36,7 +36,7 @@ const HeaderContainer: React.FC = () => {
           alt="GitHub"
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
         />
       </header>
       {isToggled && <QuickLinks />}

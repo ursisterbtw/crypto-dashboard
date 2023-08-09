@@ -19,13 +19,48 @@
 
 body {
   font-family: "Press Start 2P", cursive;
-  background: linear-gradient(
+
+  background-color: #121523; /* The color for the whitespace */
+  background-image: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    ),
+    url("/dashboard-bg.png");
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+
+  /* Always show the scrollbar track */
+  overflow-y: scroll;
 }
+
+/* Webkit browsers: Style the scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #121523;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+  border: 2px solid #121523;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Firefox: Style the scrollbar */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #121523;
+}
+
 .btn {
-  @apply m-2 px-4 py-2 bg-black text-white lowercase rounded;
+  @apply m-2 px-4 py-2 bg-[#121523] text-white lowercase rounded;
 }

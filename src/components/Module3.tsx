@@ -75,7 +75,9 @@ const Module3: React.FC<{ className?: string }> = ({ className }) => {
   };
 
   return (
-    <div className={`p-4 bg-gray-400 shadow-md rounded-md ${className}`}>
+    <div
+      className={`p-4 bg-gray-400 bg-opacity-50 shadow-md rounded-md ${className}`}
+    >
       <h2 className="text-lg">PnL Calculatoor</h2>
       <form onSubmit={handleSubmit}>
         <input

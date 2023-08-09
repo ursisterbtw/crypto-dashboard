@@ -14,7 +14,7 @@ const QuickLinks: React.FC = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <div className="p-4 bg-gray-400 shadow-md rounded-md">
+          <div className="p-4 bg-gray-400 bg-opacity-60 shadow-md rounded-md">
             <input
               className="text-center w-full m-2 p-2 rounded-md"
               type="text"

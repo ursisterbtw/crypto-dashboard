@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="p-4 bg-black text-white">
+    <footer className="p-4 bg-transparent text-white">
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

@@ -107,7 +107,7 @@ const Module1: React.FC = () => {
   };
 
   return (
-    <div className="p-4 bg-gray-400 shadow-md rounded-md">
+    <div className="p-4 bg-gray-400 bg-opacity-50 shadow-md rounded-md">
       <h2 className="text-lg">Balance Checker</h2>
       <form onSubmit={handleSubmit}>
         <input
